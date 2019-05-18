@@ -4205,7 +4205,7 @@ for (int i = 0; i &lt; cookiesDumpLoaded.size(); i++) {
           </hashTree>
         </hashTree>
       </hashTree>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="[analysis]View Results Tree" enabled="true">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="[analysis]View Results Tree" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -4241,7 +4241,7 @@ for (int i = 0; i &lt; cookiesDumpLoaded.size(); i++) {
         <stringProp name="filename">C:\Program Files (x86)\apache-jmeter-3.1\_jtl_results\requisition_flow_STG_${requesters.threads}users_${__time(yyyy-MM-dd-HHmmss)}.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="[analysis]Aggregate Report" enabled="true">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="[analysis]Aggregate Report" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
