@@ -50,12 +50,12 @@
           </elementProp>
           <elementProp name="server.hostname" elementType="Argument">
             <stringProp name="Argument.name">server.hostname</stringProp>
-            <stringProp name="Argument.value">${__P(server.hostname, debug.env)}</stringProp>
+            <stringProp name="Argument.value">${__P(server.hostname, www.tnt.com)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="protocol" elementType="Argument">
             <stringProp name="Argument.name">protocol</stringProp>
-            <stringProp name="Argument.value">${__P(protocol, http )}</stringProp>
+            <stringProp name="Argument.value">${__P(protocol, https )}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="uniformtimer.randomdelay.max" elementType="Argument">
@@ -115,10 +115,22 @@
         <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
       </ConfigTestElement>
       <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="load LOCALE  ID (CSV config)" enabled="true">
+        <stringProp name="filename">D:/projects/2019-05(bob_jmeter_maven_config)/repo/jmeter-maven-scenario/locale.csv</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">locale</stringProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="ignoreFirstLine">false</boolProp>
+      </CSVDataSet>
+      <hashTree/>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="load dataset ID (CSV config)" enabled="true">
         <stringProp name="filename">D:/projects/2019-05(bob_jmeter_maven_config)/repo/jmeter-maven-scenario/dataset_csv.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="variableNames">admin,adminPass</stringProp>
+        <stringProp name="variableNames">dataSet</stringProp>
         <stringProp name="delimiter">,</stringProp>
         <boolProp name="quotedData">false</boolProp>
         <boolProp name="recycle">true</boolProp>
@@ -600,7 +612,7 @@ ArrayList cookiesDump = new ArrayList();
         <longProp name="ThreadGroup.end_time">1552480341000</longProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET requisition/api/user/status" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /express/${locale}/site/home.html" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -610,7 +622,7 @@ ArrayList cookiesDump = new ArrayList();
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">requisition/api/user/status</stringProp>
+          <stringProp name="HTTPSampler.path">/express/${locale}/site/home.html</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -633,24 +645,6 @@ ArrayList cookiesDump = new ArrayList();
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="[Requesters] load cookies from separate threads!" enabled="true">
-            <boolProp name="resetInterpreter">false</boolProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="script">import org.apache.jmeter.protocol.http.control.CookieManager;
-import org.apache.jmeter.protocol.http.control.Cookie;
-      CookieManager manager = sampler.getCookieManager();
-//      print(&quot;get cookies for thread NUM: &quot; + ${__threadNum});
-ArrayList cookiesDumpLoaded = props.get(&quot;MySessionCookie&quot; + (${__threadNum})) ;  
-log.info(&quot;DEBUG, loading the cookie for thread NUM: &quot; + ${__threadNum});
-log.info(&quot;DEBUG, loading the cookie for thread NUM: &quot; + props.get(&quot;MySessionCookie&quot; + (${__threadNum})) );
-for (int i = 0; i &lt; cookiesDumpLoaded.size(); i++) {
-     Cookie cookie = cookiesDumpLoaded.get(i); 	
-//      manager.add(props.get(&quot;MySessionCookie&quot; + (${__threadNum})));
-            manager.add(cookie);
-	}</stringProp>
-          </BeanShellPreProcessor>
-          <hashTree/>
           <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
             <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
             <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
@@ -672,20 +666,6 @@ for (int i = 0; i &lt; cookiesDumpLoaded.size(); i++) {
             <intProp name="Assertion.test_type">8</intProp>
             <stringProp name="Assertion.custom_message"></stringProp>
           </ResponseAssertion>
-          <hashTree/>
-          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="User facility extract!!!!" enabled="true">
-            <stringProp name="JSONPostProcessor.referenceNames">USER.FACILITY</stringProp>
-            <stringProp name="JSONPostProcessor.jsonPathExprs">$.data.facilities[0].id</stringProp>
-            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            <stringProp name="JSONPostProcessor.defaultValues">USER_FACILITY_NOT_FOUND</stringProp>
-          </JSONPostProcessor>
-          <hashTree/>
-          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="User ID" enabled="true">
-            <stringProp name="JSONPostProcessor.referenceNames">USER.ID</stringProp>
-            <stringProp name="JSONPostProcessor.jsonPathExprs">$.data.userId</stringProp>
-            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            <stringProp name="JSONPostProcessor.defaultValues">USER_ID_NOT_FOUND</stringProp>
-          </JSONPostProcessor>
           <hashTree/>
         </hashTree>
         <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If login response code ==200 http code" enabled="true">
