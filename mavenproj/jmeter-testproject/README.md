@@ -23,3 +23,22 @@ https://i.imgur.com/ZrusWGP.png
 
 
 
+## Preparation to generate report correctly
+We should set in jmeter properties  (D:\projects\2019-05(bob_jmeter_maven_config)\repo\jmeter-maven-scenario\mavenproj\jmeter-testproject\target\jmeter\bin))
+> jmeter.save.saveservice.output_format=csv
+
+https://i.imgur.com/EWADf9L.png
+
+
+## Generate dashboard HTML report after  execution
+Step by step configuration details might be found here
+http://www.testautomationguru.com/jmeter-continuous-performance-testing-jmeter-maven/
+and  here: https://stackoverflow.com/a/41461366/1546574 
+
+After tests have been executed, please call the following command: 
+>   mvn pre-site
+
+And You will be able to see  in  'jmeter-testproject\target\jmeter\results\dashboard' folder
+html report: 
+https://i.imgur.com/xlxbkXF.png
+https://i.imgur.com/it7aTgd.png  
