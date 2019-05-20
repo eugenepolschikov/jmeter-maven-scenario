@@ -45,7 +45,13 @@ https://i.imgur.com/it7aTgd.png
 
 
 ## Launching jmeter scenario with parametrized values for 'threads','rampup','loopcount'
-Configuration details are mentioned here: https://jmeteronthefly.blogspot.com/2018/12/pass-parameters-from-jmeter-maven-plugin.html
+Configuration details are mentioned here: 
+(1) https://jmeteronthefly.blogspot.com/2018/12/pass-parameters-from-jmeter-maven-plugin.html
+(2) http://www.mets-blog.com/jmeter-maven-plugin-pass-parameters/
+(3) https://www.novatec-gmbh.de/en/blog/how-to-pass-command-line-properties-to-a-jmeter-testplan/
+
+Command to launch parametrized scenario. 
+! Please note: if not specified -  it will be executed by default with values set =1 (all params will be equal 1).
 
 > mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3"
   
