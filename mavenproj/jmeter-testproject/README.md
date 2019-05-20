@@ -41,4 +41,10 @@ After tests have been executed, please call the following command:
 And You will be able to see  in  'jmeter-testproject\target\jmeter\results\dashboard' folder
 html report: 
 https://i.imgur.com/xlxbkXF.png
-https://i.imgur.com/it7aTgd.png  
+https://i.imgur.com/it7aTgd.png
+
+
+## Launching jmeter scenario with parametrized values for 'threads','rampup','loopcount'
+
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3"
+  

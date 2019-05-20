@@ -7,6 +7,13 @@
     <version>1.0-SNAPSHOT</version>
     <name>jmeter-testproject</name>
     <url>http://maven.apache.org</url>
+
+    <properties>
+            <threads>property from commandline</threads>
+            <rampup>property from commandline</rampup>
+            <loopcount>property from commandline</loopcount>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -21,6 +28,13 @@
                 <groupId>com.lazerycode.jmeter</groupId>
                 <artifactId>jmeter-maven-plugin</artifactId>
                 <version>2.9.0</version>
+                <configuration>
+                    <propertiesUser>
+                        <threads>${threads}</threads>
+                        <rampup>${rampup}</rampup>
+                        <duration>${loopcount}</duration>
+                    </propertiesUser>
+                </configuration>
                 <executions>
                     <execution>
                         <id>jmeter-tests</id>
