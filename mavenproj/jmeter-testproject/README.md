@@ -45,6 +45,7 @@ https://i.imgur.com/it7aTgd.png
 
 
 ## Launching jmeter scenario with parametrized values for 'threads','rampup','loopcount'
+Configuration details are mentioned here: https://jmeteronthefly.blogspot.com/2018/12/pass-parameters-from-jmeter-maven-plugin.html
 
 > mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3"
   
