@@ -22,11 +22,6 @@
       <hashTree/>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="GLOBAL environment CONFIGURATION" enabled="true">
         <collectionProp name="Arguments.arguments">
-          <elementProp name="env" elementType="Argument">
-            <stringProp name="Argument.name">env</stringProp>
-            <stringProp name="Argument.value">${__P(env, QA)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="threads" elementType="Argument">
             <stringProp name="Argument.name">threads</stringProp>
             <stringProp name="Argument.value">${__P(threads, 1)}</stringProp>
@@ -47,14 +42,20 @@
             <stringProp name="Argument.value">${__P(server.port, 443 )}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="server.hostname" elementType="Argument">
-            <stringProp name="Argument.name">server.hostname</stringProp>
-            <stringProp name="Argument.value">${__P(server.hostname, www.tnt.com)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="protocol" elementType="Argument">
             <stringProp name="Argument.name">protocol</stringProp>
             <stringProp name="Argument.value">${__P(protocol, https )}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="domain" elementType="Argument">
+            <stringProp name="Argument.name">domain</stringProp>
+            <stringProp name="Argument.value">${__P(domain, tnt.com)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="env" elementType="Argument">
+            <stringProp name="Argument.name">env</stringProp>
+            <stringProp name="Argument.value">${__P(env, PROD)}</stringProp>
+            <stringProp name="Argument.desc">QA / TEST / ACCEPTANCE / PROD </stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="uniformtimer.randomdelay.max" elementType="Argument">
@@ -74,7 +75,7 @@
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
-        <stringProp name="HTTPSampler.domain">${server.hostname}</stringProp>
+        <stringProp name="HTTPSampler.domain"></stringProp>
         <stringProp name="HTTPSampler.port">${server.port}</stringProp>
         <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
         <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -135,7 +136,7 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.domain">${ENVIRONMENT_PREFIX}${domain}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -174,6 +175,67 @@
             <boolProp name="displaySamplerProperties">true</boolProp>
             <boolProp name="displaySystemProperties">false</boolProp>
           </DebugPostProcessor>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="Env selection  - BEANSHELL PREPROCESSOR" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">print(&quot;${env}&quot;);
+
+if(&quot;${env}&quot;.toString() == &quot;QA&quot;) {
+	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;qa.&quot;.toString());
+}
+
+else if (&quot;${env}&quot;.toString() == &quot;qa&quot;) {
+	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;qa.&quot;.toString());
+}
+
+else if (&quot;${env}&quot;.toString() == &quot;TEST&quot;) {
+	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;test.&quot;.toString());
+}
+
+else if (&quot;${env}&quot;.toString() == &quot;test&quot;) {
+	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;test.&quot;.toString());
+}
+
+else if (&quot;${env}&quot;.toString() == &quot;ACCEPTANCE&quot;) {
+	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;acceptance.&quot;.toString());
+}
+
+else if (&quot;${env}&quot;.toString() == &quot;acceptance&quot;) {
+	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;acceptance.&quot;.toString());
+}
+
+else if (&quot;${env}&quot;.toString() == &quot;DEV&quot;) {
+	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;dev.&quot;.toString());
+}
+
+else if (&quot;${env}&quot;.toString() == &quot;dev&quot;) {
+	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;dev.&quot;.toString());
+}
+
+else if (&quot;${env}&quot;.toString() == &quot;PROD&quot;) {
+	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;www.&quot;.toString());
+}
+
+else if (&quot;${env}&quot;.toString() == &quot;prod&quot;) {
+	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;www.&quot;.toString());
+}
+
+else if (&quot;${env}&quot;.toString() == &quot;LIVE&quot;) {
+	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;www.&quot;.toString());
+}
+
+else if (&quot;${env}&quot;.toString() == &quot;live&quot;) {
+	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;www.&quot;.toString());
+}
+
+else{
+	 log.error(&quot;environemnt is not defined, unknown environment parameter&quot;);
+	 print(&quot;environemnt is not defined, unknown environment parameter&quot;);
+	  	vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;UNDEFINED.&quot;.toString());
+	}</stringProp>
+          </BeanShellPreProcessor>
           <hashTree/>
         </hashTree>
       </hashTree>

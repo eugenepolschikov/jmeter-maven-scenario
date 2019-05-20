@@ -12,6 +12,8 @@
             <threads>property from commandline</threads>
             <rampup>property from commandline</rampup>
             <loopcount>property from commandline</loopcount>
+            <env>property from commandline</env>
+            <domain>property from commandline</domain>
     </properties>
 
     <dependencies>
@@ -32,7 +34,9 @@
                     <propertiesUser>
                         <threads>${threads}</threads>
                         <rampup>${rampup}</rampup>
-                        <duration>${loopcount}</duration>
+                        <loopcount>${loopcount}</loopcount>
+                        <env>${env}</env>
+                        <domain>${domain}</domain>
                     </propertiesUser>
                 </configuration>
                 <executions>

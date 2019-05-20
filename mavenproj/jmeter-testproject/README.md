@@ -53,5 +53,5 @@ Configuration details are mentioned here:
 Command to launch parametrized scenario. 
 ! Please note: if not specified -  it will be executed by default with values set =1 (all params will be equal 1).
 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=PROD" "-Ddomain=tnt.com"
   
