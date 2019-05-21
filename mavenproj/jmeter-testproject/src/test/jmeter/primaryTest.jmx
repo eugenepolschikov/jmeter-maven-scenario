@@ -55,7 +55,7 @@
           <elementProp name="env" elementType="Argument">
             <stringProp name="Argument.name">env</stringProp>
             <stringProp name="Argument.value">${__P(env, PROD)}</stringProp>
-            <stringProp name="Argument.desc">QA / TEST / ACCEPTANCE / PROD </stringProp>
+            <stringProp name="Argument.desc">QA/qa/TEST/test/ACCEPTANCE/acceptance/DEV/dev/PROD/prod/LIVE/live</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="uniformtimer.randomdelay.max" elementType="Argument">
@@ -107,7 +107,7 @@
         <boolProp name="useExpires">false</boolProp>
       </CacheManager>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load LOCALE from CSV" enabled="true">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load LOCALE from CSV. ABSOLUTE PATH TO CONFIGURE IN FILENAME!!!!!" enabled="true">
         <stringProp name="delimiter">,</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="filename">D:/projects/2019-05(bob_jmeter_maven_config)/repo/jmeter-maven-scenario/locale.csv</stringProp>
@@ -233,7 +233,7 @@ else if (&quot;${env}&quot;.toString() == &quot;live&quot;) {
 else{
 	 log.error(&quot;environemnt is not defined, unknown environment parameter&quot;);
 	 print(&quot;environemnt is not defined, unknown environment parameter&quot;);
-	  	vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;UNDEFINED.&quot;.toString());
+	  	vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;undefined.&quot;.toString());
 	}</stringProp>
           </BeanShellPreProcessor>
           <hashTree/>

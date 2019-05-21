@@ -44,14 +44,66 @@ https://i.imgur.com/xlxbkXF.png
 https://i.imgur.com/it7aTgd.png
 
 
-## Launching jmeter scenario with parametrized values for 'threads','rampup','loopcount'
+## Launching jmeter scenario with parametrized 'threads','rampup','loopcount', 'env' and 'domain' .
+
 Configuration details are mentioned here: 
 (1) https://jmeteronthefly.blogspot.com/2018/12/pass-parameters-from-jmeter-maven-plugin.html
+
 (2) http://www.mets-blog.com/jmeter-maven-plugin-pass-parameters/
+
 (3) https://www.novatec-gmbh.de/en/blog/how-to-pass-command-line-properties-to-a-jmeter-testplan/
 
 Command to launch parametrized scenario. 
 ! Please note: if not specified -  it will be executed by default with values set =1 (all params will be equal 1).
 
+There are following environment options: 
+> QA ; qa ; TEST ; test; ACCEPTANCE; acceptance; DEV; dev; PROD; prod; LIVE; live
+
+So respective command to launch will look in the following way: 
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=QA" "-Ddomain=tnt.com"
+
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=qa" "-Ddomain=tnt.com"
+
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=TEST" "-Ddomain=tnt.com"
+
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=test" "-Ddomain=tnt.com"
+
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=ACCEPTANCE" "-Ddomain=tnt.com"
+
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=acceptance" "-Ddomain=tnt.com"
+
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=DEV" "-Ddomain=tnt.com"
+
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=dev" "-Ddomain=tnt.com"
+
 > mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=PROD" "-Ddomain=tnt.com"
+
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=prod" "-Ddomain=tnt.com"
+
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=LIVE" "-Ddomain=tnt.com"
+
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=live" "-Ddomain=tnt.com"
+
+
+**IMPORTANT NOTE!** If environment in not correct (i.e parameter value not being recognized) -> 
+then prefix 'undefined.' is added to environment.
+
+For example:    
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=liveadscadfda" "-Ddomain=tnt.com"
+
+then tests will be executed against 
+
+> undefined.tnt.com 
+
+
+## HTML Report generation and analysis
+After tests are executed - call the command
+
+> mvn pre-site
+
+and HTML dashboard report is generated and placed in this folder: 
+
+_mavenproj\jmeter-testproject\target\jmeter\results\dashboard_
+https://i.imgur.com/7er1Ybv.png   
+  
   
