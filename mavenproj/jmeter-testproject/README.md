@@ -34,29 +34,29 @@ There are following environment options:
 > QA ; qa ; TEST ; test; ACCEPTANCE; acceptance; DEV; dev; PROD; prod; LIVE; live
 
 So respective command to launch will look in the following way: 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=QA" "-Ddomain=tnt.com"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=QA" "-Ddomain=tnt.com" "-Dpassword=mypass"
 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=qa" "-Ddomain=tnt.com"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=qa" "-Ddomain=tnt.com" "-Dpassword=mypass"
 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=TEST" "-Ddomain=tnt.com"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=TEST" "-Ddomain=tnt.com" "-Dpassword=mypass"
 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=test" "-Ddomain=tnt.com"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=test" "-Ddomain=tnt.com" "-Dpassword=mypass"
 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=ACCEPTANCE" "-Ddomain=tnt.com"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=ACCEPTANCE" "-Ddomain=tnt.com" "-Dpassword=mypass"
 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=acceptance" "-Ddomain=tnt.com"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=acceptance" "-Ddomain=tnt.com" "-Dpassword=mypass"
 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=DEV" "-Ddomain=tnt.com"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=DEV" "-Ddomain=tnt.com" "-Dpassword=mypass"
 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=dev" "-Ddomain=tnt.com"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=dev" "-Ddomain=tnt.com" "-Dpassword=mypass"
 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=PROD" "-Ddomain=tnt.com"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=PROD" "-Ddomain=tnt.com" "-Dpassword=mypass"
 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=prod" "-Ddomain=tnt.com"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=prod" "-Ddomain=tnt.com" "-Dpassword=mypass"
 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=LIVE" "-Ddomain=tnt.com"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=LIVE" "-Ddomain=tnt.com" "-Dpassword=mypass"
 
-> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=live" "-Ddomain=tnt.com"
+> mvn clean verify "-Dthreads=3" "-Drampup=3" "-Dloopcount=3" "-Denv=live" "-Ddomain=tnt.com" "-Dpassword=mypass"
 
 => in console output should be the following: 
 https://i.imgur.com/ZrusWGP.png  

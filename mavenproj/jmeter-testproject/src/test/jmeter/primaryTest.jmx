@@ -58,6 +58,11 @@
             <stringProp name="Argument.desc">QA/qa/TEST/test/ACCEPTANCE/acceptance/DEV/dev/PROD/prod/LIVE/live</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="password" elementType="Argument">
+            <stringProp name="Argument.name">password</stringProp>
+            <stringProp name="Argument.value">${__P(password, abracadabra)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="uniformtimer.randomdelay.max" elementType="Argument">
             <stringProp name="Argument.name">uniformtimer.randomdelay.max</stringProp>
             <stringProp name="Argument.value">1500</stringProp>
@@ -193,6 +198,7 @@
             <stringProp name="parameters"></stringProp>
             <boolProp name="resetInterpreter">false</boolProp>
             <stringProp name="script">print(&quot;${env}&quot;);
+
 
 if(&quot;${env}&quot;.toString() == &quot;QA&quot;) {
 	 vars.put(&quot;ENVIRONMENT_PREFIX&quot;,&quot;qa.&quot;.toString());

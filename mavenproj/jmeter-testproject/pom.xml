@@ -8,13 +8,6 @@
     <name>jmeter-testproject</name>
     <url>http://maven.apache.org</url>
 
-    <properties>
-            <threads>property from commandline</threads>
-            <rampup>property from commandline</rampup>
-            <loopcount>property from commandline</loopcount>
-            <env>property from commandline</env>
-            <domain>property from commandline</domain>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -37,6 +30,7 @@
                         <loopcount>${loopcount}</loopcount>
                         <env>${env}</env>
                         <domain>${domain}</domain>
+                        <password>${password}</password>
                     </propertiesUser>
                 </configuration>
                 <executions>
